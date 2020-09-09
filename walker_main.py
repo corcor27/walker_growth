@@ -54,9 +54,9 @@ for t in range(delay_start, scaled_time):
     if (np.sum(container_array)/Vc) >= 0.98:
         break
 
-output = "/home/a.cot12/modeling/test/final.png" 
-output1 = "/home/a.cot12/modeling/test/threashold_image_1492-2.png" 
-output2 = "/home/a.cot12/modeling/test/base_image_1492-2.png" 
+output = "/home/a.cot12/modeling/1492_2_walkers/final.png" 
+output1 = "/home/a.cot12/modeling/1492_2_walkers/threashold_image_1492-2.png" 
+output2 = "/home/a.cot12/modeling/1492_2_walkers/base_image_1492-2.png" 
 plt.imsave(output, container_array, cmap = 'gray')
 plt.imsave(output1, threashold_image , cmap = 'gray')
 plt.imsave(output2, image , cmap = 'gray')
