@@ -1,7 +1,0 @@
-name: Growenv
-channels:
-  - defaults
-dependencies:
-  - python = 3.7
-
-	
