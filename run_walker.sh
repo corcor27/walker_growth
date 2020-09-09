@@ -6,4 +6,4 @@
 #SBATCH --mem-per-cpu=4000
 #SBATCH --ntasks=1
 
-python random_walker_main.py
+python walker_main.py
