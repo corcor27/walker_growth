@@ -10,10 +10,10 @@ image details and abnormalitiy location.
 """
 image_path = "/home/a.cot12/Mam_dataset/dicom_M/1492-2.dcm"
 
-x1 = 1372
-x2 = 1551
-z1 = 1492
-z2 = 1674
+x1 = 1450
+x2 = 1697
+z1 = 1561
+z2 = 1847
 width = x2 - x1 + 150
 height = z2 - z1 + 150
 iterations = 10
