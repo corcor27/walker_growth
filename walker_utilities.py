@@ -107,12 +107,6 @@ def threashold_volume(threashold_image):
     area = np.sum(threashold_image)
     return area
 
-def Delete_Walkers(walker_array, threashold_image):
-    for walker in range(0, walker_array.shape[1]-1):
-        if threashold_image[walker_array[0, walker], walker_array[1, walker]] == 0:
-            ran_val = random.randint(0,walker_array.shape[1]-1)
-            walker_array = walker_array[:, ran_val]
-    return walker_array
 
 
 
