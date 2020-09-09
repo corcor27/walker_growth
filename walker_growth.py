@@ -2,6 +2,7 @@ import numpy as np
 import pydicom as dicom
 import walker_utilities as UTILS
 import matplotlib.pyplot as plt
+import random
 
               
 def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, width, GV):
