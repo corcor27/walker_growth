@@ -67,7 +67,7 @@ def inialise_2d_array(Z_start, X_start, hieght, width):
     return container_array
 
 
-def Centre_start(threashold_image):
+def centre_start(threashold_image):
     X_list = []
     Y_list = []
     for kk in range(0, threashold_image.shape[0]):
@@ -136,7 +136,7 @@ def bounds(z,x, image):
         return 1
     
 def grow_region(image, threashold_image):
-    Centre_start = Centre_start(threashold_image)
+    Centre_start = centre_start(threashold_image)
     container = np.zeros((image.shape))
     listx = []
     listz = []
@@ -162,7 +162,7 @@ def grow_region(image, threashold_image):
     return threashold_image
     
 def estimate_distance(threashold_image, N):
-    Centre_start = Centre_start(threashold_image)
+    Centre_start = centre_start(threashold_image)
     distance = []
     for walker in range(0, N):
         walker_array = np.zeros((2, 1))
