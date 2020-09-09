@@ -38,7 +38,7 @@ delay_start = 10 * scale
 scaled_time = (time * scale)
 walker_array = np.zeros((2, 1), dtype = np.int16)
 
-Centre_start = UTILS.Centre_start(threashold_image)
+Centre_start = UTILS.centre_start(threashold_image)
 walker_array[:, 0] = [Centre_start[0], Centre_start[1]]
 container_array = UTILS.inialise_2d_array(Centre_start[0],Centre_start[1], height, width)
 Centre_start = UTILS.Centre_start(threashold_image)
