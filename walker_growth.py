@@ -19,9 +19,11 @@ def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, w
                 container_array[new_z, new_x] += 1
             else:
                 walker_array[0, walker],walker_array[1, walker]  = new_z, new_x
-                if threashold_array[walker_array[0, walker], walker_array[1, walker]] == 0:
-                     ran_val = random.randint(0,walker_array.shape[1]-1)
-                     walker_array = walker_array[:, ran_val]
+                
+               
+                #if threashold_array[walker_array[0, walker], walker_array[1, walker]] == 0:
+                     #ran_val = random.randint(0,walker_array.shape[1]-1)
+                     #walker_array = walker_array[:, ran_val]
             
                 
     else:
