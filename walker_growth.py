@@ -17,8 +17,7 @@ def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, w
             if value == 1:
                 walker_array[0, walker],walker_array[1, walker]  = new_z, new_x  
                 container_array[new_z, new_x] += 1
-            else:
-                walker_array[0, walker],walker_array[1, walker]  = new_z, new_x
+            
                 
                 
     else:
@@ -32,8 +31,7 @@ def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, w
             if value == 1:
                 walker_array[0, walker],walker_array[1, walker]  = new_z, new_x 
                 container_array[new_z, new_x] += 1
-            else:
-                walker_array[0, walker],walker_array[1, walker]  = new_z, new_x
+            
             
     
             
