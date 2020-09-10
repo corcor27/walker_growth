@@ -43,7 +43,7 @@ walker_array[:, 0] = [Centre_start[0], Centre_start[1]]
 container_array = UTILS.inialise_2d_array(Centre_start[0],Centre_start[1], height, width)
 
 
-for t in range(delay_start, scaled_time):
+for t in range(0, scaled_time):
     epoch_time = t/scale
     GV = int(round(UTILS.exponential_function(epoch_time, t0, V0, alpha0),0))
     container_array, walker_array = GROW.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV)
