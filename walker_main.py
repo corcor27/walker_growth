@@ -32,7 +32,7 @@ dis = UTILS.estimate_distance(threashold_image, 200)
 
 
 Vc = UTILS.threashold_volume(threashold_image)
-time = UTILS.time_exponential_function(t0, V0, alpha0, Vc) + 4
+time = UTILS.time_exponential_function(t0, V0, alpha0, Vc) + 5
 scale= int(round(dis/time))
 delay_start = 10 * scale
 scaled_time = (time * scale)
@@ -51,7 +51,7 @@ for t in range(delay_start, scaled_time):
         output = "/home/a.cot12/modeling/0145_2_walkers/%s.png" %(epoch_time)
         plt.imsave(output, container_array, cmap = 'gray')
 	
-    if (np.sum(container_array)/Vc) >= 0.98:
+    if (np.sum(container_array)/Vc) >= 0.99:
         break
 
 output = "/home/a.cot12/modeling/0145_2_walkers/final.png" 
