@@ -179,7 +179,39 @@ def estimate_distance(threashold_image, N):
     print(distance[0])
     return mean_distance
         
-                
+    
+def possible_pos_array(threashold_image, container_array):
+    positions_array = np.zeros((threashold_image.shape))
+
+    for kk in range(1, threashold_image.shape[0]-1):
+        for ii in range(1, threashold_image.shape[1]-1):
+            if threashold_image[kk,ii] > container_array[kk,ii]:
+                for dy in range(-1,2):
+                    for dx in range(-1,2):
+                        y, x = kk + dy, ii + dx
+                        positions_array[y,x] = threashold_image[y,x] - container_array[y,x]
+    return positions_array
+
+def brightness_list(possible_positions, container_array):
+    max_val = np.amax(possible_positions)
+    for kk in range(0, container_array.shape[0]):
+        for ii in range(0, container_array.shape[0]):
+            if possible_positions[kk,ii] == max_val:
+                container_array[kk,ii] += 1
+                return container_array, kk, ii
+        
+        
+    
+
+def brightest_growth(threashold_image, container_array, vol):
+    walker_array = np.zeros((2, vol))
+    for vol in range(0, vol):
+        aval_pos = possible_pos_array(threashold_image, container_array)
+        container_array, z, x = brightness_list(aval_pos, container_array)
+        walker_array[:, vol] = z, x
+        
+    
+    return container_array, walker_array
                 
                 
                 
