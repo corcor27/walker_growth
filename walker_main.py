@@ -8,12 +8,12 @@ from scipy.ndimage import gaussian_filter
 """
 image details and abnormalitiy location.
 """
-image_path = "/home/a.cot12/Mam_dataset/dicom_M/1487-1.dcm"
+image_path = "/home/a.cot12/Mam_dataset/dicom_M/0145-2.dcm"
 
-x1 = 214
-x2 = 417
-z1 = 1034
-z2 = 1262
+x1 = 1372
+x2 = 1551
+z1 = 1492
+z2 = 1674
 width = x2 - x1 + 150
 height = z2 - z1 + 150
 iterations = 10
@@ -54,9 +54,9 @@ for t in range(delay_start, scaled_time):
     if (np.sum(container_array)/Vc) >= 0.98:
         break
 
-output = "/home/a.cot12/modeling/1487_1_walkers/final.png" 
-output1 = "/home/a.cot12/modeling/1487_1_walkers/threashold_image_1487.png" 
-output2 = "/home/a.cot12/modeling/1487_1_walkers/base_image_1487.png" 
+output = "/home/a.cot12/modeling/0145_2_walkers/final.png" 
+output1 = "/home/a.cot12/modeling/0145_2_walkers/threashold_image_0145.png" 
+output2 = "/home/a.cot12/modeling/0145_2_walkers/base_image_0145.png" 
 plt.imsave(output, container_array, cmap = 'gray')
 plt.imsave(output1, threashold_image , cmap = 'gray')
 plt.imsave(output2, image , cmap = 'gray')
