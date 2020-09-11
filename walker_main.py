@@ -27,7 +27,7 @@ def get_details(val):
         image_path = r"C:\Users\cory1\Documents\test-folder\data_set\Malignant\dicom_M\1527-1.dcm"
         return [image_path, 514, 733, 1313, 1535]    
         
-image_path, x1, x2, z1, z2 = get_details(3)
+image_path, x1, x2, z1, z2 = get_details(2)
 width = x2 - x1 + 150
 height = z2 - z1 + 150
 iterations = 10
