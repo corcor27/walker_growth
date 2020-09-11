@@ -8,7 +8,7 @@ from scipy.ndimage import gaussian_filter
 
 
 def IMAGE_THREASHOLD_OTSU(image):
-    output = "/home/a.cot12/modeling/1487_1_walkers/threashold.png"
+    output = "/home/a.cot12/modeling/0145_2_walkers/threashold.png"
     blur_image = gaussian_filter(image, sigma=5)
     plt.imsave(output, blur_image)
     img = cv2.imread(output, 0)
