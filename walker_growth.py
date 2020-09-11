@@ -21,7 +21,7 @@ def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, w
                 
                 
     else:
-                
+        print(RW)     
         new_walkers = UTILS.new_growth_position_2(container_array, GV, walker_array)
         #container_array, new_walkers = UTILS.brightest_growth(threashold_array, container_array, GV)
         print(new_walkers)
