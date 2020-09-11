@@ -7,13 +7,27 @@ import cv2
 from scipy.ndimage import gaussian_filter
 """
 image details and abnormalitiy location.
+1492_2 = 0
+0145_2 = 1
+1487_1 = 2
+1527_1 = 3
 """
-image_path = "/home/a.cot12/Mam_dataset/dicom_M/0145-2.dcm"
 
-x1 = 1372
-x2 = 1551
-z1 = 1492
-z2 = 1674
+def get_details(val):
+    if val == 0:
+        image_path = r"C:\Users\cory1\Documents\test-folder\data_set\Malignant\dicom_M\1492-2.dcm"
+        return [image_path, 1450, 1697, 1561, 1847]
+    elif val == 1:
+        image_path = r"C:\Users\cory1\Documents\test-folder\data_set\Malignant\dicom_M\0145-2.dcm"
+        return [image_path, 1372, 1551, 1492, 1674]
+    elif val == 2:
+        image_path = r"C:\Users\cory1\Documents\test-folder\data_set\Malignant\dicom_M\1487-1.dcm"
+        return [image_path, 214, 417, 1034, 1262]
+    elif val == 3:
+        image_path = r"C:\Users\cory1\Documents\test-folder\data_set\Malignant\dicom_M\1527-1.dcm"
+        return [image_path, 514, 733, 1313, 1535]    
+        
+image_path, x1, x2, z1, z2 = get_details(3)
 width = x2 - x1 + 150
 height = z2 - z1 + 150
 iterations = 10
