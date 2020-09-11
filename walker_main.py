@@ -48,7 +48,7 @@ for t in range(delay_start, scaled_time):
     GV = int(round(UTILS.exponential_function(epoch_time, t0, V0, alpha0),0))
     container_array, walker_array = GROW.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV)
     if epoch_time == int(epoch_time):
-        output = "/home/a.cot12/modeling/0145_2_walkers/%s.png" %(epoch_time)
+        output = "/home/a.cot12/modeling/1492_2_walkers/%s.png" %(epoch_time)
         plt.imsave(output, container_array, cmap = 'gray')
 	
     if (np.sum(container_array)/Vc) >= 0.99:
