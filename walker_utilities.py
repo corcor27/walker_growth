@@ -195,7 +195,7 @@ def possible_pos_array(threashold_image, container_array):
 def brightness_list(possible_positions, container_array):
     max_val = np.amax(possible_positions)
     for kk in range(0, container_array.shape[0]):
-        for ii in range(0, container_array.shape[0]):
+        for ii in range(0, container_array.shape[1]):
             if possible_positions[kk,ii] == max_val:
                 container_array[kk,ii] += 1
                 return container_array, kk, ii
