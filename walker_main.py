@@ -47,7 +47,8 @@ dis = UTILS.estimate_distance(threashold_image, 200)
 
 Vc = UTILS.threashold_volume(threashold_image)
 time = UTILS.time_exponential_function(t0, V0, alpha0, Vc) + 5
-scale= int(round(dis/time))
+#scale= int(round(dis/time))
+scale = 50
 delay_start = 8 * scale
 scaled_time = (time * scale)
 walker_array = np.zeros((2, 1), dtype = np.int16)
