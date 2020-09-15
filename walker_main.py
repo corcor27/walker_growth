@@ -46,9 +46,9 @@ dis = UTILS.estimate_distance(threashold_image, 200)
 
 
 Vc = UTILS.threashold_volume(threashold_image)
-time = UTILS.time_exponential_function(t0, V0, alpha0, Vc) + 5
+time = UTILS.time_exponential_function(t0, V0, alpha0, Vc) + 2
 #scale= int(round(dis/time))
-scale = 150
+scale = 10
 delay_start = 8 * scale
 scaled_time = (time * scale)
 walker_array = np.zeros((2, 1), dtype = np.int16)
@@ -58,20 +58,20 @@ walker_array[:, 0] = [Centre_start[0], Centre_start[1]]
 container_array = UTILS.inialise_2d_array(Centre_start[0],Centre_start[1], height, width)
 
 
-for t in range(delay_start, scaled_time):
+for t in range(0, scaled_time):
     epoch_time = t/scale
     GV = int(round(UTILS.exponential_function(epoch_time, t0, V0, alpha0),0))
     container_array, walker_array = GROW.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV)
     if epoch_time == int(epoch_time):
-        output = "/home/a.cot12/modeling/1527_walkers_150/%s.png" %(epoch_time)
+        output = "/home/a.cot12/modeling/1527_walkers_10/%s.png" %(epoch_time)
         plt.imsave(output, container_array, cmap = 'gray')
 	
     if (np.sum(container_array)/Vc) >= 0.99:
         break
 
-output = "/home/a.cot12/modeling/1527_walkers_150/final.png" 
-output1 = "/home/a.cot12/modeling/1527_walkers_150/threashold_image_1527.png" 
-output2 = "/home/a.cot12/modeling/1527_walkers_150/base_image_1527.png" 
+output = "/home/a.cot12/modeling/1527_walkers_10/final.png" 
+output1 = "/home/a.cot12/modeling/1527_walkers_10/threashold_image_1527.png" 
+output2 = "/home/a.cot12/modeling/1527_walkers_10/base_image_1527.png" 
 plt.imsave(output, container_array, cmap = 'gray')
 plt.imsave(output1, threashold_image , cmap = 'gray')
 plt.imsave(output2, image , cmap = 'gray')
