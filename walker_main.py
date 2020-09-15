@@ -56,6 +56,11 @@ walker_array = np.zeros((2, 1), dtype = np.int16)
 Centre_start = UTILS.centre_start(threashold_image)
 walker_array[:, 0] = [Centre_start[0], Centre_start[1]]
 container_array = UTILS.inialise_2d_array(Centre_start[0],Centre_start[1], height, width)
+output2 = "/home/a.cot12/modeling/1527_walkers_10/base_image_1527.png" 
+output1 = "/home/a.cot12/modeling/1527_walkers_10/threashold_image_1527.png" 
+plt.imsave(output2, image , cmap = 'gray')
+plt.imsave(output1, threashold_image , cmap = 'gray')
+
 
 
 for t in range(0, scaled_time):
@@ -70,11 +75,10 @@ for t in range(0, scaled_time):
         break
 
 output = "/home/a.cot12/modeling/1527_walkers_10/final.png" 
-output1 = "/home/a.cot12/modeling/1527_walkers_10/threashold_image_1527.png" 
-output2 = "/home/a.cot12/modeling/1527_walkers_10/base_image_1527.png" 
+
+
 plt.imsave(output, container_array, cmap = 'gray')
-plt.imsave(output1, threashold_image , cmap = 'gray')
-plt.imsave(output2, image , cmap = 'gray')
+
 
 
 plt.imshow(template)
