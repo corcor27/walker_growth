@@ -206,15 +206,18 @@ def brightness_list(possible_positions, batch_size, container_array):
 def brightest_growth(threashold_image, container_array, batch_size, req_vol, walker_array):
     if req_vol <= batch_size:
         aval_pos = possible_pos_array(threashold_image, container_array)
-        container_array, walker_array = brightness_list(aval_pos, req_vol, container_array)
+        container_array, new_walker_array = brightness_list(aval_pos, req_vol, container_array)
+        walker_array = (walker_array, new_walker_array, 1)
     else:
         NOI = int(np.floor(req_vol/batch_size))
         remainder = req_vol - (NOI*batch_size)
         for val in range(0, NOI):
             aval_pos = possible_pos_array(threashold_image, container_array)
-            container_array, walker_array = brightness_list(aval_pos, batch_size, container_array)
+            container_array, new_walker_array = brightness_list(aval_pos, batch_size, container_array)
+            walker_array = (walker_array, new_walker_array, 1)
         aval_pos = possible_pos_array(threashold_image, container_array)
-        container_array, walker_array = brightness_list(aval_pos, remainder, container_array)
+        container_array, new_walker_array = brightness_list(aval_pos, remainder, container_array)
+        walker_array = (walker_array, new_walker_array, 1)
     
     return container_array, walker_array
                 
