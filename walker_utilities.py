@@ -182,7 +182,6 @@ def estimate_distance(threashold_image, N):
     
 def possible_pos_array(threashold_image, container_array):
     positions_array = np.zeros((threashold_image.shape))
-
     for kk in range(1, threashold_image.shape[0]-1):
         for ii in range(1, threashold_image.shape[1]-1):
             if threashold_image[kk,ii] > container_array[kk,ii]:
@@ -192,24 +191,30 @@ def possible_pos_array(threashold_image, container_array):
                         positions_array[y,x] = threashold_image[y,x] - container_array[y,x]
     return positions_array
 
-def brightness_list(possible_positions, container_array):
-    max_val = np.amax(possible_positions)
-    for kk in range(0, container_array.shape[0]):
-        for ii in range(0, container_array.shape[1]):
-            if possible_positions[kk,ii] == max_val:
-                container_array[kk,ii] += 1
-                return container_array, kk, ii
+def brightness_list(possible_positions, batch_size, container_array):
+    walker_array = np.zeros((2, batch_size))
+    for gg in range(0, batch_size):
+        pos = np.argwhere(possible_positions.max() == possible_positions)
+        possible_positions[pos[0][0],pos[0][1]] = 0
+        container_array[pos[0][0],pos[0][1]] += 1
+        walker_array[:,gg] = pos[0][0],pos[0][1]
+    return container_array, walker_array
         
         
     
 
-def brightest_growth(threashold_image, container_array, vol):
-    walker_array = np.zeros((2, vol))
-    for vol in range(0, vol):
+def brightest_growth(threashold_image, container_array, batch_size, req_vol):
+    if req_vol < batch_size:
         aval_pos = possible_pos_array(threashold_image, container_array)
-        container_array, z, x = brightness_list(aval_pos, container_array)
-        walker_array[:, vol] = z, x
-        
+        container_array = brightness_list(aval_pos, req_vol, container_array)
+    else:
+        NOI = int(np.floor(req_vol/batch_size))
+        remainder = req_vol - (NOI*batch_size)
+        for val in range(0, NOI):
+            aval_pos = possible_pos_array(threashold_image, container_array)
+            container_array = brightness_list(aval_pos, batch_size, container_array)
+        aval_pos = possible_pos_array(threashold_image, container_array)
+        container_array = brightness_list(aval_pos, remainder, container_array)
     
     return container_array, walker_array
                 
