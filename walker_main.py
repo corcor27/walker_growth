@@ -38,6 +38,7 @@ V0 = 1
 alpha0 = 0.5
 beta = 0.05 
 LB = 0
+batch_size = 10
 image = UTILS.diread_area(image_path,x1,x2,z1,z2, LB)
 
 binary_image = UTILS.IMAGE_THREASHOLD_OTSU(image)
@@ -66,7 +67,7 @@ plt.imsave(output1, threashold_image , cmap = 'gray')
 for t in range(0, scaled_time):
     epoch_time = t/scale
     GV = int(round(UTILS.exponential_function(epoch_time, t0, V0, alpha0),0))
-    container_array, walker_array = GROW.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV)
+    container_array, walker_array = GROW.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV, batch_size)
     if epoch_time == int(epoch_time):
         output = "/home/a.cot12/modeling/1487_walkers_10/%s.png" %(epoch_time)
         plt.imsave(output, container_array, cmap = 'gray')
