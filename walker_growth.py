@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import random
 
               
-def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, width, GV):
+def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, width, GV, batch_size):
     
     
     CV = np.sum(container_array)
@@ -22,7 +22,7 @@ def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, w
                 
     else: 
         #new_walkers = UTILS.new_growth_position_2(container_array, GV, walker_array)
-        container_array, walker_array = UTILS.brightest_growth(threashold_array, container_array, GV, walker_array)
+        container_array, walker_array = UTILS.brightest_growth(threashold_array, container_array, batch_size, GV, walker_array)
         for walker in range(0,walker_array.shape[1]):
             new_z, new_x  = UTILS.generate_random_move(walker_array[0, walker], walker_array[1, walker])
             value = UTILS.random_availability_check(new_z,new_x, container_array, threashold_array)
