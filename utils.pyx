@@ -5,6 +5,7 @@ import cv2
 from scipy.ndimage import gaussian_filter
 from datetime import datetime
 import random
+import cython
 
 def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, width, GV, batch_size):
     
@@ -137,9 +138,6 @@ def threashold_volume(threashold_image):
     return area
 
 
-
-
-
 def patch(image, x,z):
     xlist = []
     zlist = []
@@ -210,9 +208,13 @@ def estimate_distance(threashold_image, N):
         
     
 def possible_pos_array(threashold_image, container_array):
-    positions_array = np.zeros((threashold_image.shape))
-    for kk in range(1, threashold_image.shape[0]-1):
-        for ii in range(1, threashold_image.shape[1]-1):
+    @cython.boundscheck(False)  # turn off array bounds check
+    @cython.wraparound(False)
+    cdef int ymax = threashold_image.shape[0]
+    cdef int xmax = threashold_image.shape[1]
+    cdef np.ndarray  positions_array = np.zeros([xmax, ymax], dtype=np.int)
+    for kk in range(1, ymax-1):
+        for ii in range(1, xmax-1):
             if threashold_image[kk,ii] > container_array[kk,ii]:
                 for dy in range(-1,2):
                     for dx in range(-1,2):
@@ -228,9 +230,6 @@ def brightness_list(possible_positions, batch_size, container_array):
         container_array[pos[0][0],pos[0][1]] += 1
         walker_array[:,gg] = pos[0][0],pos[0][1]
     return container_array, walker_array
-        
-        
-    
 
 def brightest_growth(threashold_image, container_array, batch_size, req_vol, walker_array):
     if req_vol <= batch_size:
