@@ -57,8 +57,8 @@ walker_array = np.zeros((2, 1), dtype = np.int16)
 Centre_start = UTILS.centre_start(threashold_image)
 walker_array[:, 0] = [Centre_start[0], Centre_start[1]]
 container_array = UTILS.inialise_2d_array(Centre_start[0],Centre_start[1], height, width)
-output2 = "/home/a.cot12/modeling/1487_walkers_10/base_image_1487.png" 
-output1 = "/home/a.cot12/modeling/1487_walkers_10/threashold_image_1487.png" 
+output2 = "/home/a.cot12/modeling/1487_walkers_25/base_image_1487.png" 
+output1 = "/home/a.cot12/modeling/1487_walkers_25/threashold_image_1487.png" 
 plt.imsave(output2, image)
 plt.imsave(output1, threashold_image , cmap = 'gray')
 
@@ -69,14 +69,14 @@ for t in range(0, scaled_time):
     GV = int(round(UTILS.exponential_function(epoch_time, t0, V0, alpha0),0))
     container_array, walker_array = GROW.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV, batch_size)
     if epoch_time == int(epoch_time):
-        output = "/home/a.cot12/modeling/1487_walkers_10/%s.png" %(epoch_time)
+        output = "/home/a.cot12/modeling/1487_walkers_25/%s.png" %(epoch_time)
         plt.imsave(output, container_array, cmap = 'gray')
 	
     if (np.sum(container_array)/Vc) >= 0.99:
         break
 
-output = "/home/a.cot12/modeling/1487_walkers_10/final.png" 
+output3 = "/home/a.cot12/modeling/1487_walkers_25/final.png" 
 
 
-plt.imsave(output, container_array, cmap = 'gray')
+plt.imsave(output3, container_array, cmap = 'gray')
 
