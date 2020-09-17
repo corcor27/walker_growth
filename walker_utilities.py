@@ -171,15 +171,15 @@ def grow_region(image, threashold_image):
         z = listz[0]
         Patch = patch(image, x,z)
         for rr in range(0, len(Patch[0])):
-            if 1 <= Patch[0][rr] <= image.shape[0]-1 and 1 <= Patch[1][rr] <= image.shape[1] - 1:
+            if 2 <= Patch[0][rr] <= image.shape[0]-2 and 2 <= Patch[1][rr] <= image.shape[1] - 2:
                 if threashold_image[Patch[0][rr], Patch[1][rr]] > 0 and container[Patch[0][rr], Patch[1][rr]] == 0:
                     container[Patch[0][rr], Patch[1][rr]] = 1
                     listx.append(Patch[1][rr])
                     listz.append(Patch[0][rr])
         listx.pop(0)
         listz.pop(0)
-    for kk in range(0, image.shape[0]):
-        for ii in range(0, image.shape[1]):
+    for kk in range(2, image.shape[0]-2):
+        for ii in range(2, image.shape[1]-2):
             if container[kk,ii] == 0:
                 threashold_image[kk,ii] = 0
                 
