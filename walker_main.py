@@ -51,6 +51,7 @@ dis = UTILS.estimate_distance(threashold_image, 200)
 Vc = UTILS.threashold_volume(threashold_image)
 time = UTILS.time_exponential_function(t0, V0, alpha0, Vc) + 2
 walker_array = np.zeros((2, 1), dtype = np.int16)
+scaled_time = (time * scale)
 """
 Centre_start = UTILS.centre_start(threashold_image)
 walker_array[:, 0] = [Centre_start[0], Centre_start[1]]
