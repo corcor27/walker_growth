@@ -5,7 +5,35 @@ import matplotlib.pyplot as plt
 import cv2
 from scipy.ndimage import gaussian_filter
 
-
+def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, width, GV, batch_size):
+    
+    
+    CV = np.sum(container_array)
+    RW = int(GV - (CV + walker_array.shape[1]))
+    if RW <= 0:
+        for walker in range(0, walker_array.shape[1]):
+            new_z, new_x  = generate_random_move(walker_array[0, walker], walker_array[1, walker])
+            value = random_availability_check(new_z,new_x, container_array, threashold_array)
+            if value == 1:
+                walker_array[0, walker],walker_array[1, walker]  = new_z, new_x  
+                container_array[new_z, new_x] += 1
+            
+                
+                
+    else:
+        
+        container_array, walker_array = UTILS.brightest_growth(threashold_array, container_array, batch_size, RW, walker_array)
+        for walker in range(0,walker_array.shape[1]):
+            new_z, new_x  = generate_random_move(walker_array[0, walker], walker_array[1, walker])
+            value = random_availability_check(new_z,new_x, container_array, threashold_array)
+            if value == 1:
+                walker_array[0, walker],walker_array[1, walker]  = new_z, new_x 
+                container_array[new_z, new_x] += 1
+            
+            
+    
+            
+    return container_array, walker_array
 
 def IMAGE_THREASHOLD_OTSU(image):
     output = "/home/a.cot12/modeling/1487_walkers_100_test/threashold.png"
