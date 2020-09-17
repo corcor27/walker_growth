@@ -41,7 +41,7 @@ alpha0 = 0.5
 beta = 0.05 
 LB = 0
 batch_size = 10
-scale = 10
+scale = 25
 image = UTILS.diread_area(image_path,x1,x2,z1,z2, LB)
 
 binary_image = UTILS.IMAGE_THREASHOLD_OTSU(image)
@@ -59,8 +59,8 @@ container_array = UTILS.inialise_2d_array(Centre_start[0],Centre_start[1], heigh
 bright_start = np.argwhere(threashold_image.max() == threashold_image)
 walker_array[:, 0] = [bright_start[0][0], bright_start[0][1]]
 container_array = UTILS.inialise_2d_array(bright_start[0][0], bright_start[0][1], height, width)
-output2 = "/home/a.cot12/modeling/1527_walkers_10/base_image_1527.png" 
-output1 = "/home/a.cot12/modeling/1527_walkers_10/threashold_image_1527.png" 
+output2 = "/home/a.cot12/modeling/1527_walkers_25/base_image_1527.png" 
+output1 = "/home/a.cot12/modeling/1527_walkers_25/threashold_image_1527.png" 
 plt.imsave(output2, image)
 plt.imsave(output1, threashold_image , cmap = 'gray')
 
@@ -71,13 +71,13 @@ for t in range(0, scaled_time):
     GV = int(round(UTILS.exponential_function(epoch_time, t0, V0, alpha0),0))
     container_array, walker_array = UTILS.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV, batch_size)
     if epoch_time == int(epoch_time):
-        output = "/home/a.cot12/modeling/1527_walkers_10/%s.png" %(epoch_time)
+        output = "/home/a.cot12/modeling/1527_walkers_25/%s.png" %(epoch_time)
         plt.imsave(output, container_array, cmap = 'gray')
 	
     if (np.sum(container_array)/Vc) >= 0.99:
         break
 
-output3 = "/home/a.cot12/modeling/1527_walkers_10/final.png" 
+output3 = "/home/a.cot12/modeling/1527_walkers_25/final.png" 
 
 
 plt.imsave(output3, container_array, cmap = 'gray')
