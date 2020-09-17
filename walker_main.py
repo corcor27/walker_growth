@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import walker_utilities as UTILS
 import cv2
 from scipy.ndimage import gaussian_filter
+from datetime import datetime
+startTime = datetime.now()
 """
 image details and abnormalitiy location.
 1492_2 = 0
