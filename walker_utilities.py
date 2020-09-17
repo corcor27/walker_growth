@@ -37,7 +37,7 @@ def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, w
     return container_array, walker_array
 
 def IMAGE_THREASHOLD_OTSU(image):
-    output = "/home/a.cot12/modeling/1527_walkers_100/threashold.png"
+    output = "/home/a.cot12/modeling/0145_walkers_10/threashold.png"
     blur_image = gaussian_filter(image, sigma=5)
     plt.imsave(output, blur_image)
     img = cv2.imread(output, 0)
@@ -111,10 +111,10 @@ def centre_start(threashold_image):
 def diread_area(path,x1,x2,z1,z2,LB):
     Beginning_image = dicom.dcmread(path)
     beginning_image = Beginning_image.pixel_array
-    x1ml = x1
-    x2ml = x2
-    z1ml = z1
-    z2ml = z2
+    x1ml = x1 - 75
+    x2ml = x2 + 75
+    z1ml = z1 - 75
+    z2ml = z2 + 75
     diffxml = x2ml - x1ml
     diffzml = z2ml - z1ml
     array = np.zeros((diffzml, diffxml))
