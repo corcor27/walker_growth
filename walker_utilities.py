@@ -22,7 +22,7 @@ def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, w
                 
     else:
         
-        container_array, walker_array = UTILS.brightest_growth(threashold_array, container_array, batch_size, RW, walker_array)
+        container_array, walker_array = brightest_growth(threashold_array, container_array, batch_size, RW, walker_array)
         for walker in range(0,walker_array.shape[1]):
             new_z, new_x  = generate_random_move(walker_array[0, walker], walker_array[1, walker])
             value = random_availability_check(new_z,new_x, container_array, threashold_array)
