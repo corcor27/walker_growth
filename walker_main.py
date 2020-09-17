@@ -80,6 +80,3 @@ output = "/home/a.cot12/modeling/1487_walkers_10/final.png"
 
 plt.imsave(output, container_array, cmap = 'gray')
 
-
-
-plt.imshow(template)
