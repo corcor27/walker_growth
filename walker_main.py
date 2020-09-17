@@ -39,22 +39,21 @@ alpha0 = 0.5
 beta = 0.05 
 LB = 0
 batch_size = 10
+scale = 100
 image = UTILS.diread_area(image_path,x1,x2,z1,z2, LB)
 
 binary_image = UTILS.IMAGE_THREASHOLD_OTSU(image)
 threashold_image = UTILS.grow_region(image, binary_image)
 dis = UTILS.estimate_distance(threashold_image, 200)
-
-
 Vc = UTILS.threashold_volume(threashold_image)
 time = UTILS.time_exponential_function(t0, V0, alpha0, Vc) + 2
-#scale= int(round(dis/time))
-scale = 100
-delay_start = 8 * scale
-scaled_time = (time * scale)
 walker_array = np.zeros((2, 1), dtype = np.int16)
-
+"""
 Centre_start = UTILS.centre_start(threashold_image)
+walker_array[:, 0] = [Centre_start[0], Centre_start[1]]
+container_array = UTILS.inialise_2d_array(Centre_start[0],Centre_start[1], height, width)
+"""
+bright_start = 
 walker_array[:, 0] = [Centre_start[0], Centre_start[1]]
 container_array = UTILS.inialise_2d_array(Centre_start[0],Centre_start[1], height, width)
 output2 = "/home/a.cot12/modeling/1487_walkers_100_test/base_image_1487.png" 
