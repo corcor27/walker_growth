@@ -212,6 +212,7 @@ def possible_pos_array(threashold_image, container_array):
     @cython.wraparound(False)
     cdef int ymax = threashold_image.shape[0]
     cdef int xmax = threashold_image.shape[1]
+    cdef int y,x
     cdef np.ndarray  positions_array = np.zeros([xmax, ymax], dtype=np.int)
     for kk in range(1, ymax-1):
         for ii in range(1, xmax-1):
