@@ -7,6 +7,7 @@ import cv2
 from scipy.ndimage import gaussian_filter
 from datetime import datetime
 startTime = datetime.now()
+print(datetime.now() - startTime)
 """
 image details and abnormalitiy location.
 1492_2 = 0
@@ -80,4 +81,5 @@ output3 = "/home/a.cot12/modeling/1487_walkers_100_test/final.png"
 
 
 plt.imsave(output3, container_array, cmap = 'gray')
+print(datetime.now() - startTime)
 
