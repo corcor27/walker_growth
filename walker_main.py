@@ -53,9 +53,9 @@ Centre_start = UTILS.centre_start(threashold_image)
 walker_array[:, 0] = [Centre_start[0], Centre_start[1]]
 container_array = UTILS.inialise_2d_array(Centre_start[0],Centre_start[1], height, width)
 """
-bright_start = 
-walker_array[:, 0] = [Centre_start[0], Centre_start[1]]
-container_array = UTILS.inialise_2d_array(Centre_start[0],Centre_start[1], height, width)
+bright_start = np.argwhere(threashold_image.max() == threashold_image)
+walker_array[:, 0] = [bright_start[0][0], bright_start[0][1]]
+container_array = UTILS.inialise_2d_array(bright_start[0][0], bright_start[0][1], height, width)
 output2 = "/home/a.cot12/modeling/1487_walkers_100_test/base_image_1487.png" 
 output1 = "/home/a.cot12/modeling/1487_walkers_100_test/threashold_image_1487.png" 
 plt.imsave(output2, image)
