@@ -1,7 +1,6 @@
 import numpy as np
 import pydicom as dicom
 import matplotlib.pyplot as plt
-import walker_utilities as UTILS
 import cv2
 from scipy.ndimage import gaussian_filter
 from datetime import datetime
