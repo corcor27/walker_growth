@@ -1,6 +1,5 @@
 import numpy as np
 import pydicom as dicom
-import walker_growth as GROW
 import matplotlib.pyplot as plt
 import walker_utilities as UTILS
 import cv2
@@ -70,7 +69,7 @@ plt.imsave(output1, threashold_image , cmap = 'gray')
 for t in range(0, scaled_time):
     epoch_time = t/scale
     GV = int(round(UTILS.exponential_function(epoch_time, t0, V0, alpha0),0))
-    container_array, walker_array = GROW.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV, batch_size)
+    container_array, walker_array = UTILS.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV, batch_size)
     if epoch_time == int(epoch_time):
         output = "/home/a.cot12/modeling/1487_walkers_100_test/%s.png" %(epoch_time)
         plt.imsave(output, container_array, cmap = 'gray')
