@@ -37,7 +37,7 @@ def RUN_RANDOM_GROWTH(container_array, walker_array, threashold_array, height, w
     return container_array, walker_array
 
 def IMAGE_THREASHOLD_OTSU(image):
-    output = "/home/a.cot12/modeling/0145_walkers_100/threashold.png"
+    output = "/home/a.cot12/modeling/1492_walkers_25/threashold.png"
     blur_image = gaussian_filter(image, sigma=5)
     plt.imsave(output, blur_image)
     img = cv2.imread(output, 0)
