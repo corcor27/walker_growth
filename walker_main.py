@@ -59,10 +59,10 @@ container_array = UTILS.inialise_2d_array(Centre_start[0],Centre_start[1], heigh
 bright_start = np.argwhere(threashold_image.max() == threashold_image)
 walker_array[:, 0] = [bright_start[0][0], bright_start[0][1]]
 container_array = UTILS.inialise_2d_array(bright_start[0][0], bright_start[0][1], height, width)
-output2 = "/home/a.cot12/modeling/0145_walkers_100/base_image_0145.png" 
-output1 = "/home/a.cot12/modeling/0145_walkers_100/threashold_image_0145.png" 
-plt.imsave(output2, image)
-plt.imsave(output1, threashold_image , cmap = 'gray')
+#output2 = "/home/a.cot12/modeling/0145_walkers_100/base_image_0145.png" 
+#output1 = "/home/a.cot12/modeling/0145_walkers_100/threashold_image_0145.png" 
+#plt.imsave(output2, image)
+#plt.imsave(output1, threashold_image , cmap = 'gray')
 
 
 
@@ -77,9 +77,9 @@ for t in range(0, scaled_time):
     if (np.sum(container_array)/Vc) >= 0.99:
         break
 
-output3 = "/home/a.cot12/modeling/0145_walkers_100/final.png" 
+#output3 = "/home/a.cot12/modeling/0145_walkers_100/final.png" 
 
 
-plt.imsave(output3, container_array, cmap = 'gray')
-print(datetime.now() - startTime)
+#plt.imsave(output3, container_array, cmap = 'gray')
+#print(datetime.now() - startTime)
 
