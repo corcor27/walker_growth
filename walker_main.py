@@ -5,6 +5,7 @@ import walker_utilities as UTILS
 import cv2
 from scipy.ndimage import gaussian_filter
 from datetime import datetime
+import csv
 startTime = datetime.now()
 print(datetime.now() - startTime)
 """
@@ -63,19 +64,23 @@ container_array = UTILS.inialise_2d_array(bright_start[0][0], bright_start[0][1]
 #output1 = "/home/a.cot12/modeling/0145_walkers_100/threashold_image_0145.png" 
 #plt.imsave(output2, image)
 #plt.imsave(output1, threashold_image , cmap = 'gray')
-
+time_array = []
+volume_array = []
 
 
 for t in range(0, scaled_time):
-    epoch_time = t/scale
-    GV = int(round(UTILS.exponential_function(epoch_time, t0, V0, alpha0),0))
-    container_array, walker_array = UTILS.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV, batch_size)
-    if epoch_time == int(epoch_time):
-        output = "/home/a.cot12/modeling/0145_walkers_100/%s.png" %(epoch_time)
-        plt.imsave(output, container_array, cmap = 'gray')
+	epoch_time = t/scale
+    	GV = int(round(UTILS.exponential_function(epoch_time, t0, V0, alpha0),0))
+    	container_array, walker_array = UTILS.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV, batch_size)
+	time_array.append(epoch_time)
+	volume_array.append(np.sum(container_array))
 	
-    if (np.sum(container_array)/Vc) >= 0.99:
-        break
+    	if epoch_time == int(epoch_time):
+        	#output = "/home/a.cot12/modeling/0145_walkers_100/%s.png" %(epoch_time)
+        	#plt.imsave(output, container_array, cmap = 'gray')
+	
+    	if (np.sum(container_array)/Vc) >= 0.99:
+        	break
 
 #output3 = "/home/a.cot12/modeling/0145_walkers_100/final.png" 
 
