@@ -5,7 +5,7 @@ import walker_utilities as UTILS
 import cv2
 from scipy.ndimage import gaussian_filter
 from datetime import datetime
-import csv
+import pandas as pd
 startTime = datetime.now()
 print(datetime.now() - startTime)
 """
@@ -81,7 +81,9 @@ for t in range(0, scaled_time):
 	
     	if (np.sum(container_array)/Vc) >= 0.99:
         	break
-
+df = pd.DataFrame(list(zip(time_array,volume_array)), columns = ['Time','Volume'])
+output = "/home/a.cot12/modeling/0145_walkers_100/volume.csv" 
+df.to_csv(output)
 #output3 = "/home/a.cot12/modeling/0145_walkers_100/final.png" 
 
 
