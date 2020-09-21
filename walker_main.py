@@ -74,8 +74,8 @@ for t in range(0, scaled_time):
     container_array, walker_array = UTILS.RUN_RANDOM_GROWTH(container_array, walker_array, threashold_image, height, width, GV, batch_size)
     time_array.append(epoch_time)
     volume_array.append(np.sum(container_array))
-    #if (np.sum(container_array)/Vc) >= 0.99:
-        #break
+    if (np.sum(container_array)/Vc) >= 0.99:
+        break
 
 		#if epoch_time == int(epoch_time):
 			#output = "/home/a.cot12/modeling/0145_walkers_100/%s.png" %(epoch_time)
