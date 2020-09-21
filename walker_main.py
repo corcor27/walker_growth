@@ -80,7 +80,9 @@ for t in range(0, scaled_time):
 			#plt.imsave(output, container_array, cmap = 'gray')
 
     if (np.sum(container_array)/Vc) >= 0.99:
-	break
+        break
+	
+	
 df = pd.DataFrame(list(zip(time_array,volume_array)), columns = ['Time','Volume'])
 output = "/home/a.cot12/modeling/0145_walkers_100/volume.csv" 
 df.to_csv(output)    
