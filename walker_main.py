@@ -30,7 +30,7 @@ def get_details(val):
         image_path = "/home/a.cot12/Mam_dataset/dicom_M/1527-1.dcm"
         return [image_path, 514, 733, 1313, 1535]    
         
-image_path, x1, x2, z1, z2 = get_details(1)
+image_path, x1, x2, z1, z2 = get_details(0)
 width = x2 - x1 + 150
 height = z2 - z1 + 150
 iterations = 10
@@ -42,7 +42,7 @@ alpha0 = 0.5
 beta = 0.05 
 LB = 0
 batch_size = 10
-scale = 100
+scale = 25
 image = UTILS.diread_area(image_path,x1,x2,z1,z2, LB)
 
 binary_image = UTILS.IMAGE_THREASHOLD_OTSU(image)
@@ -85,7 +85,7 @@ for t in range(0, scaled_time):
 	
 	
 df = pd.DataFrame(list(zip(time_array,volume_array)), columns = ['Time','Volume'])
-output = "/home/a.cot12/modeling/0145_walkers_100/volume.csv" 
+output = "/home/a.cot12/modeling/1492_walkers_25/volume.csv" 
 df.to_csv(output)    
 #output3 = "/home/a.cot12/modeling/0145_walkers_100/final.png" 
 
