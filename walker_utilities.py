@@ -111,10 +111,10 @@ def centre_start(threashold_image):
 def diread_area(path,x1,x2,z1,z2,LB):
     Beginning_image = dicom.dcmread(path)
     beginning_image = Beginning_image.pixel_array
-    x1ml = x1 - 75
-    x2ml = x2 + 75
-    z1ml = z1 - 75
-    z2ml = z2 + 75
+    x1ml = x1
+    x2ml = x2
+    z1ml = z1
+    z2ml = z2 
     diffxml = x2ml - x1ml
     diffzml = z2ml - z1ml
     array = np.zeros((diffzml, diffxml))
