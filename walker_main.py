@@ -42,7 +42,7 @@ alpha0 = 0.5
 beta = 0.05 
 LB = 0
 batch_size = 10
-scale = 10
+scale = 25
 image = UTILS.diread_area(image_path,x1,x2,z1,z2, LB)
 
 binary_image = UTILS.IMAGE_THREASHOLD_OTSU(image)
@@ -85,7 +85,7 @@ for t in range(0, scaled_time):
 	
 	
 df = pd.DataFrame(list(zip(time_array,volume_array)), columns = ['Time','Volume'])
-output = "/home/a.cot12/modeling/0145_walkers_10/volume.csv" 
+output = "/home/a.cot12/modeling/0145_walkers_25/volume.csv" 
 df.to_csv(output)    
 #output3 = "/home/a.cot12/modeling/0145_walkers_100/final.png" 
 
