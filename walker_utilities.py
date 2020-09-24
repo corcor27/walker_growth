@@ -211,8 +211,8 @@ def estimate_distance(threashold_image, N):
     
 def possible_pos_array(threashold_image, container_array):
     positions_array = np.zeros((threashold_image.shape))
-    for kk in range(1, threashold_image.shape[0]-1):
-        for ii in range(1, threashold_image.shape[1]-1):
+    for kk in range(2, threashold_image.shape[0]-2):
+        for ii in range(2, threashold_image.shape[1]-2):
             if threashold_image[kk,ii] > container_array[kk,ii]:
                 for dy in range(-1,2):
                     for dx in range(-1,2):
